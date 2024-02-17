@@ -1,0 +1,65 @@
+
+
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">CBSUA-Library&nbsp;<span>ETheses</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Browse</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href=""></a>
+        </li>
+      </ul>
+      <!--
+      <form method='' action='' class="form-inline mt-2 mt-md-0 ml-4" >
+        <input class="form-control" type="text" >
+        <button class="btn btn-success" >Search</button>
+      </form>
+    -->
+        
+      <!-- navbar elements on left side -->
+      
+      <% if (LoggedU) { %>
+        <% if (LoggedU == null) { %>
+          <div>
+            <a href="/Ulogin" class="btn btn-info">Login </a>
+          </div>
+          <%} else { %>
+            
+            <div class="dropdown">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <%= LoggedU%>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/account" >Account</a>
+                <% if(auth >= 9){ %>
+                <!--a class="dropdown-item" href="/dashboard" >Dashboard</a-->
+                <% } %>
+                <a class="dropdown-item" href="/logout" >Logout</a>
+               
+              </div>
+            </div>
+
+        <% } %>
+      <%} else { %>
+        <div>
+          <a href="/Ulogin" class="btn btn-info">Login </a>
+        </div>
+      <% } %>
+
+     
+     
+
+      
+    </div>
+  </nav>

@@ -1,0 +1,45 @@
+
+<div class="">
+  <div class=" ">
+    
+    <!-- Footer -->
+    <footer class="page-footer font-small ">
+    
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">2020 CBSUA LIBRARY
+          <a href="/">  </a>
+        </div>
+        <!-- Copyright -->
+      
+      </footer>
+      <!-- Footer -->
+      
+    
+</div>
+</div>
+
+
+
+<script src="/assets/jquery/dist/jquery.js"></script>
+<!--script src="/assets/node_modules/popper.js/dist/popper.js"></script-->
+<script src="/assets/datatables.net-dt/js/dataTables.dataTables.js"></script>
+<script src="/assets/datatables.net/js/jquery.dataTables.js"></script>
+
+<script src="/assets/@popperjs/core/dist/umd/popper.js"></script>
+<script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/upload.js"></script>
+<script src="/js/man.js"></script>
+
+<% if( typeof render === 'undefined' || render === null ){ %>
+<% } else { %>
+  
+  <% if (render.fhandle === 'encoded') { %>
+    <script src="/js/t2.js"></script>
+  <% } else { %>
+    <script src="/js/render.js"></script>
+  <% } %>
+ 
+<% } %>
+<!--  <script src="/js/render.js"></script> -->
+
+<!--script src="js/fileupload.js"></script-->

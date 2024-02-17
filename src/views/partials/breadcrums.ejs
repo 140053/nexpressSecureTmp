@@ -1,0 +1,13 @@
+<div class='ml-3 mr-3'>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <% if (title === 'Home') { %>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <%} else { %>
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href=""><%= title%></a></li>
+            <% } %>
+            
+        </ol>
+    </nav>
+</div>

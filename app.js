@@ -6,11 +6,23 @@ const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
 const path = require("path");
 const expressLayouts = require("express-ejs-layouts");
+const bodyParser = require('body-parser')
 const multer = require("multer");
+var compression = require('compression')
 require('dotenv').config();
 const app = express();
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(helmet());
 app.disable("x-powered-by");
+
+
+// compress responses
+app.use(compression())
+
+//Templating config
+//templating engine
+app.use(expressLayouts);
+//app.set('layout', './layouts/default')
 
 // Use cookie-parser middleware
 app.use(cookieParser());
@@ -32,6 +44,16 @@ app.use(
   })
 );
 
+
+//path to the view 
+app.set('views',path.join(__dirname,'app/views'));
+app.set('view engine', 'ejs');
+
+//static files
+//app.use('/pdfjs',express.static(path.join(__dirname,'app/custom_lib')));
+app.use('/assets',express.static(path.join(__dirname,'node_modules')));
+app.use(express.static(path.join(__dirname, 'src/public')));
+
 // Redis client setup
 const redisClient = redis.createClient({
   host: "localhost",
@@ -47,10 +69,10 @@ const rateLimiter = new RateLimiterRedis({
 });
 
 
+// not authenticated routes
+app.use('/', require('./src/routes/home'));
 
-app.get('/', (req, res) => {
-  res.send('Welcome')
-})
+
 
 // Apply the rate limiter middleware globally
 app.use((req, res, next) => {
@@ -74,12 +96,7 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke!');
 });
 
-// Start server
-//const PORT = process.env.PORT || 3000;
-//app.listen(PORT, () => {
- // console.log(`Server is running on port ${PORT}`);
-//});
-// Start server
+
 const startServer = () => {
   const PORT = process.env.PORT ||  3000;
   app.listen(PORT, () => {
