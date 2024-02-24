@@ -22,7 +22,7 @@ app.use(compression())
 //Templating config
 //templating engine
 app.use(expressLayouts);
-//app.set('layout', './layouts/default')
+app.set('layout', './layouts/default')
 
 // Use cookie-parser middleware
 app.use(cookieParser());
@@ -46,7 +46,7 @@ app.use(
 
 
 //path to the view 
-app.set('views',path.join(__dirname,'app/views'));
+app.set('views',path.join(__dirname,'src/views'));
 app.set('view engine', 'ejs');
 
 //static files

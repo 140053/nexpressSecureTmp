@@ -1,6 +1,7 @@
 const express = require('express');
 const route = express.Router();
 //const task = require('../controller/appController');
+const cnt = require("../controller/home")
 //const middleware = require('../middleware/auth');
 
 /*
@@ -21,9 +22,7 @@ route.use(myLogger)
   
 
 //home page
-route.get('/',/*middleware.authenticated, task.indexv1*/ (req, res) => {
-    res.send("as")
-});
+route.get('/',/*middleware.authenticated, task.indexv1*/ cnt.home );
 
 
 
